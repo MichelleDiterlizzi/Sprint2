@@ -8,7 +8,7 @@ SELECT nombre FROM producto;
 SELECT nombre, precio From producto;
 
 --3 Llista totes les columnes de la taula "producto".
-SELECT * FROM producto;
+SHOW COLUMNS FROM producto;
 
 --4 Llista el nom dels "productos", el preu en euros i el preu en dòlars nord-americans (USD).
 SELECT nombre, precio, precio*1.1 AS precio_en _dolares FROM producto;
@@ -65,6 +65,77 @@ JOIN producto ON producto.codigo_fabricante = fabricante.codigo
 WHERE fabricante.codigo = 2;
 
 
+--21 Retorna una llista amb el nom del producte, preu i nom de fabricant de tots els productes de la base de dades.
+
+SELECT p.nombre AS nombre_producto, p.precio, f.nombre AS nombre_fabricante
+FROM producto p
+JOIN fabricante f ON p.codigo_fabricante = f.codigo;
+
+--22 Ordena el resultat pel nom del fabricant, per ordre alfabètic.
+
+SELECT p.nombre AS nombre_producto, p.precio, f.nombre AS nombre_fabricante
+FROM producto p
+JOIN fabricante f ON p.codigo_fabricante = f.codigo
+ORDER BY f.nombre ASC;
+
+
+--23 Retorna una llista amb el codi del producte, nom del producte, codi del fabricant i nom del fabricant, de tots els productes de la base de dades.
+
+SELECT p.codigo AS codigo_producto, p.nombre AS nombre_producto, f.codigo AS codigo_fabricante, f.nombre AS nombre_fabricante
+FROM producto p
+JOIN fabricante f ON p.codigo_fabricante = f.codigo;
+
+
+--24 Retorna el nom del producte, el seu preu i el nom del seu fabricant, del producte més barat.
+
+SELECT p.nombre AS nombre_producto, p.precio, f.nombre AS nombre_fabricante
+FROM producto p
+JOIN fabricante f ON p.codigo_fabricante = f.codigo
+ORDER BY p.precio ASC
+LIMIT 1;
+
+
+--25 Retorna el nom del producte, el seu preu i el nom del seu fabricant, del producte més car.
+
+SELECT p.nombre AS nombre_producto, p.precio, f.nombre AS nombre_fabricante
+FROM producto p
+JOIN fabricante f ON p.codigo_fabricante = f.codigo
+ORDER BY p.precio DESC
+LIMIT 1;
+
+--26 Retorna una llista de tots els productes del fabricant Lenovo.
+
+SELECT p.nombre AS productos_lenovo
+FROM producto p
+JOIN fabricante f ON p.codigo_fabricante = f.codigo
+WHERE f.nombre = 'Lenovo';
+
+
+--27 Retorna una llista de tots els productes del fabricant Crucial que tinguin un preu major que 200 €.
+
+SELECT p.nombre AS nombre_producto
+FROM producto p
+JOIN fabricante f ON p.codigo_fabricante = f.codigo
+WHERE f.nombre = 'Crucial' AND p.precio > 200;
+
+--28 Retorna una llista amb tots els productes dels fabricants Asus, Hewlett-Packard i Seagate. Sense utilitzar l'operador IN.
+
+SELECT p.nombre AS nombre_producto, f.nombre AS nombre_fabricante
+FROM producto p
+JOIN fabricante f ON p.codigo_fabricante = f.codigo
+WHERE f.nombre = 'Asus'
+   OR f.nombre = 'Hewlett-Packard'
+   OR f.nombre = 'Seagate';
+
+
+--29 Retorna un llistat amb tots els productes dels fabricants Asus, Hewlett-Packard i Seagate. Usant l'operador IN.
+
+SELECT p.nombre AS nombre_producto, f.nombre AS nombre_fabricante
+FROM producto p
+JOIN fabricante f ON p.codigo_fabricante = f.codigo
+WHERE f.nombre IN ('Asus', 'Hewlett-Packard', 'Seagate');
+
+
 BASE DE DATOS UNIVERSIDAD:
 
 --1 Retorna un llistat amb el primer cognom, segon cognom i el nom de tots els/les alumnes. El llistat haurà d'estar ordenat alfabèticament de menor a major pel primer cognom, segon cognom i nom.
@@ -101,7 +172,7 @@ WHERE p.tipo = 'alumno' AND p.nif = '26902806M';
 --8 Retorna un llistat amb el nom de tots els departaments que tenen professors/es que imparteixen alguna assignatura en el Grau en Enginyeria Informàtica (Pla 2015).
 SELECT DISTINCT d.nombre FROM departamento d
 JOIN profesor prof ON prof.id_departamento = d.id
-JOIN asignatura a ON a.id_profesor = prof.id
+JOIN asignatura a ON a.id_profesor = prof.id_profesor
 JOIN grado g ON g.id = a.id_grado
 WHERE g.nombre = 'enginyeria Informàtica (Pla 2015)'
 
@@ -120,7 +191,7 @@ WHERE ce.anyo_inicio = 2018 AND ce.anyo_fin = 2019;
 
 SELECT p.apellido1 AS primer_apellido, p.apellido2 AS segundo_apellido, p.nombre, d.nombre AS nombre_departamento
 FROM persona p
-LEFT JOIN profesor prof ON prof.id_profesor = p.id
+JOIN profesor prof ON prof.id_profesor = p.id
 LEFT JOIN departamento d ON d.id = prof.id_departamento
 ORDER BY d.nombre ASC, p.apellido1 ASC, p.apellido2 ASC, p.nombre ASC;
 
@@ -146,7 +217,7 @@ WHERE prof.id_profesor IS NULL;
 
 SELECT p.apellido1 AS primer_apellido, p.apellido2 AS segundo_apellido, p.nombre
 FROM persona p
-LEFT JOIN profesor prof ON prof.id_profesor = p.id
+JOIN profesor prof ON prof.id_profesor = p.id
 LEFT JOIN asignatura a ON a.id_profesor = prof.id_profesor
 WHERE a.id IS NULL;
 
@@ -215,12 +286,9 @@ HAVING COUNT(a.id) > 40
 ORDER BY COUNT(a.id) ASC;
 
 
---XX 7 Retorna un llistat que mostri el nom dels graus i la suma del nombre total de crèdits que hi ha per a cada tipus d'assignatura. El resultat ha de tenir tres columnes: nom del grau, tipus d'assignatura i la suma dels crèdits de totes les assignatures que hi ha d'aquest tipus.
---XXXXXX
-
 --8 Retorna un llistat que mostri quants/es alumnes s'han matriculat d'alguna assignatura en cadascun dels cursos escolars. El resultat haurà de mostrar dues columnes, una columna amb l'any d'inici del curs escolar i una altra amb el nombre d'alumnes matriculats/des.
 
-SELECT ce.anyo_inicio AS anyo_inicio, COUNT(ama.id_alumno) AS numero_alumnos_matriculados
+SELECT ce.anyo_inicio AS anyo_inicio, COUNT(DISTINCT ama.id_alumno) AS numero_alumnos_matriculados
 FROM curso_escolar ce
 JOIN alumno_se_matricula_asignatura ama ON ama.id_curso_escolar = ce.id
 GROUP BY ce.anyo_inicio;
@@ -234,20 +302,6 @@ JOIN profesor prof ON prof.id_profesor = p.id
 JOIN asignatura a ON a.id_profesor = prof.id_profesor
 GROUP BY prof.id_profesor;
 
-
---10 Retorna totes les dades de l'alumne més jove.
-
-SELECT * FROM persona WHERE tipo ='alumno'
-ORDER BY fecha_nacimiento ASC LIMIT 1
-
-
---11 Retorna un llistat amb els professors/es que tenen un departament associat i que no imparteixen cap assignatura.
-
-SELECT * FROM persona p
-JOIN profesor prof ON prof.id_profesor = p.id
-JOIN departamento d ON prof.id_departamento = d.id
-LEFT JOIN asignatura a ON a.id_profesor = prof.id_profesor
-WHERE a.id IS NULL  
 
 
 
