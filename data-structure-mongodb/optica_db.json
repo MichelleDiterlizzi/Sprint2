@@ -1,0 +1,203 @@
+{
+    "proveedores":[
+        {
+            "nombre": "Optica Universitaria",
+            "direccion": {
+                "calle": "Av. Diagonal",
+                "numero": "601",
+                "ciudad" : "Barcelona",
+                "codigo_postal" : "08028",
+                "pais" : "España"
+            },
+            "telefono": "123456789",
+            "fax": "123456789",
+            "NIF": "A12345678"
+        },
+        {
+            "nombre": "Ópticas Visión Perfecta",
+            "direccion": {
+              "calle": "Gran Vía",
+              "numero": "123",
+              "ciudad": "Madrid",
+              "codigo_postal": "28013",
+              "pais": "España"
+            },
+            "telefono": "+34 910123456",
+            "fax": "+34 910654321",
+            "NIF": "B12345678"
+          },
+          {
+            "nombre": "Gafas & Estilo",
+            "direccion": {
+              "calle": "Passeig de Gràcia",
+              "numero": "45",
+              "ciudad": "Barcelona",
+              "codigo_postal": "08007",
+              "pais": "España"
+            },
+            "telefono": "+34 930987654",
+            "fax": "+34 930654987",
+            "NIF": "B87654321"
+          }
+    ],
+
+    "gafas":[
+        {
+            "marca": "Ray-ban",
+            "graduacion":{
+                "izquierda": 1.75,
+                "derecha" : 2.0
+            },
+            "tipo_montadura": "Metalica",
+            "color_montadura": "Azul Oscuro",
+            "color_lentes" : "Gris",
+            "precio" : "149,99",
+            "proveedor": "Optica Universitaria"
+        },
+        {
+            "marca": "Ray-ban",
+            "graduacion":{
+                "izquierda": 2.75,
+                "derecha" : 2.15
+            },
+            "tipo_montadura": "Pasta",
+            "color_montadura": "Rojo",
+            "color_lentes" : "Negras",
+            "precio" : "349,99",
+            "proveedor": "Ópticas Visión Perfecta"
+        },
+        {
+            "marca": "Prada",
+            "graduacion": {
+              "izquierda": -1.50,
+              "derecha": -1.25
+            },
+            "tipo_montadura": "Pasta",
+            "color_montadura": "Negro",
+            "color_lentes": "Transparente",
+            "precio": 320.50,
+            "proveedor": "Gafas & Estilo"
+          },
+          {
+            "marca": "Oakley",
+            "graduacion": {
+              "izquierda": -2.00,
+              "derecha": -1.75
+            },
+            "tipo_montadura": "Metálica",
+            "color_montadura": "Plateado",
+            "color_lentes": "Azul",
+            "precio": 180.99,
+            "proveedor": "Ópticas Visión Perfecta"
+          }
+    ],
+
+    "clientes":[
+        {
+            "nombre": "Sara Garcia",
+            "direccion": "Carrer d'Arago, 41",
+            "telefono": "123454321",
+            "correo_electronico": "saragarcia@gmail.com",
+            "fecha_registro": "2023-09-23",
+            "compras" : [
+                { "$oid":"67b5d32576aa926d960787e8"}
+            ]
+        },
+
+        {
+            "nombre": "Julio Perez",
+            "direccion": "Carrer de Valencia, 28",
+            "telefono": "923486754",
+            "correo_electronico": "juliogarcia@gmail.com",
+            "fecha_registro": "2024-01-19",
+            "id_cliente_recomandado" : { "$oid":"67b5d2e976aa926d960787e4"},
+            "compras" : [
+                { "$oid":"67b721e80b058203b540970e"}
+            ]
+        },
+        {
+            "nombre": "Carlos Gómez",
+            "direccion": "Calle Mayor 25, Madrid, España",
+            "telefono": "+34 612345678",
+            "correo_electronico": "carlos.gomez@email.com",
+            "fecha_registro": "2024-05-12",
+            "id_cliente_recomandado": { "$oid":"67b9afd7fe8198906216a54f"},
+            "compras" : [
+                { "$oid":"67b722180b058203b540970f"}
+            ]
+          },
+          {
+            "nombre": "Laura Fernández",
+            "direccion": "Avenida Diagonal 123, Barcelona, España",
+            "telefono": "+34 698765432",
+            "correo_electronico": "laura.fernandez@email.com",
+            "fecha_registro": "2024-08-20",
+            "id_cliente_recomandado": { "$oid":"67b9afe7fe8198906216a550"},
+            "compras" : [
+                null
+            ]
+          }
+    ],
+
+    "ventas": [
+        {
+            "cliente_id": { "$oid":"67b5d2e976aa926d960787e4"},
+            "empleado_id": { "$oid":"67b9b3b0fe8198906216a55a"},
+            "gafas_id": [{ "$oid":"67b5d2bf76aa926d960787e2"},
+            { "$oid":"67b9d33cfe8198906216a567"}
+        ],
+            "fecha_hora": "2024-07-19T10:30:00Z"
+        },
+
+        {
+            "cliente_id": { "$oid":"67b9afd7fe8198906216a54f"},
+            "empleado_id": { "$oid":"67b9b3bdfe8198906216a55b"},
+            "gafas_id": [{ "$oid":"67b71f070b058203b540970c"},
+                        { "$oid":"67b9d2a1fe8198906216a566"}
+        ],
+            "fecha_hora": "2025-02-19T13:30:00Z"
+        },
+        {
+            "cliente_id": { "$oid":"67b9afe7fe8198906216a550"},
+            "empleado_id": { "$oid":"67b9b3d4fe8198906216a55c"},
+            "gafas_id": [{ "$oid":"67b9d33cfe8198906216a567"}],
+            "fecha_hora": "2025-04-19T20:30:00Z"
+        }
+    ],
+    
+    "empleados":[
+        {
+            "nombre": "Lucía Alonso",
+            "direccion": "Carrer d'Arago, 71, Barcelona",
+            "telefono": "0304454321",
+            "ventas" : [
+                { "$oid": "67b5d32576aa926d960787e8"}
+            ]
+        },
+
+        {
+            "nombre": "Christian Gomez",
+            "direccion": "Av Diagonal, 18, Barcelona",
+            "telefono": "727476754",
+            "ventas" : [
+                { "$oid": "67b721e80b058203b540970e"}
+            ]
+        },
+        {
+            "nombre": "Sofía Ramírez",
+            "direccion": "Carrer Augusta, 120, Barcelona",
+            "telefono": "+55 11987654321",
+            "ventas" : [
+                { "$oid": "67b722180b058203b540970f"}
+            ]
+          },
+          {
+            "nombre": "Daniel Torres",
+            "direccion": "Gran Vía, 30, Barcelona",
+            "telefono": "+34 655443322",
+            "ventas" : [
+                null
+            ]
+          }
+    ]
+}
