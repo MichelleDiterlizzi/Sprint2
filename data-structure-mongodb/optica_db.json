@@ -1,97 +1,4 @@
 {
-    "proveedores":[
-        {
-            "nombre": "Optica Universitaria",
-            "direccion": {
-                "calle": "Av. Diagonal",
-                "numero": "601",
-                "ciudad" : "Barcelona",
-                "codigo_postal" : "08028",
-                "pais" : "España"
-            },
-            "telefono": "123456789",
-            "fax": "123456789",
-            "NIF": "A12345678"
-        },
-        {
-            "nombre": "Ópticas Visión Perfecta",
-            "direccion": {
-              "calle": "Gran Vía",
-              "numero": "123",
-              "ciudad": "Madrid",
-              "codigo_postal": "28013",
-              "pais": "España"
-            },
-            "telefono": "+34 910123456",
-            "fax": "+34 910654321",
-            "NIF": "B12345678"
-          },
-          {
-            "nombre": "Gafas & Estilo",
-            "direccion": {
-              "calle": "Passeig de Gràcia",
-              "numero": "45",
-              "ciudad": "Barcelona",
-              "codigo_postal": "08007",
-              "pais": "España"
-            },
-            "telefono": "+34 930987654",
-            "fax": "+34 930654987",
-            "NIF": "B87654321"
-          }
-    ],
-
-    "gafas":[
-        {
-            "marca": "Ray-ban",
-            "graduacion":{
-                "izquierda": 1.75,
-                "derecha" : 2.0
-            },
-            "tipo_montadura": "Metalica",
-            "color_montadura": "Azul Oscuro",
-            "color_lentes" : "Gris",
-            "precio" : "149,99",
-            "proveedor": "Optica Universitaria"
-        },
-        {
-            "marca": "Ray-ban",
-            "graduacion":{
-                "izquierda": 2.75,
-                "derecha" : 2.15
-            },
-            "tipo_montadura": "Pasta",
-            "color_montadura": "Rojo",
-            "color_lentes" : "Negras",
-            "precio" : "349,99",
-            "proveedor": "Ópticas Visión Perfecta"
-        },
-        {
-            "marca": "Prada",
-            "graduacion": {
-              "izquierda": -1.50,
-              "derecha": -1.25
-            },
-            "tipo_montadura": "Pasta",
-            "color_montadura": "Negro",
-            "color_lentes": "Transparente",
-            "precio": 320.50,
-            "proveedor": "Gafas & Estilo"
-          },
-          {
-            "marca": "Oakley",
-            "graduacion": {
-              "izquierda": -2.00,
-              "derecha": -1.75
-            },
-            "tipo_montadura": "Metálica",
-            "color_montadura": "Plateado",
-            "color_lentes": "Azul",
-            "precio": 180.99,
-            "proveedor": "Ópticas Visión Perfecta"
-          }
-    ],
-
     "clientes":[
         {
             "nombre": "Sara Garcia",
@@ -133,9 +40,7 @@
             "correo_electronico": "laura.fernandez@email.com",
             "fecha_registro": "2024-08-20",
             "id_cliente_recomandado": { "$oid":"67b9afe7fe8198906216a550"},
-            "compras" : [
-                null
-            ]
+            "compras" : []
           }
     ],
 
@@ -164,40 +69,122 @@
             "fecha_hora": "2025-04-19T20:30:00Z"
         }
     ],
+
+    "gafas":[
+        {
+            "marca": "Ray-ban",
+            "graduacion":{
+                "izquierda": 1.75,
+                "derecha" : 2.0
+            },
+            "tipo_montadura": "Metalica",
+            "color_montadura": "Azul Oscuro",
+            "color_lentes" : "Gris",
+            "precio" : "149,99",
+            "proveedor": "Optica Universitaria"
+        },
+        {
+            "marca": "Ray-ban",
+            "graduacion":{
+                "izquierda": 2.75,
+                "derecha" : 2.15
+            },
+            "tipo_montadura": "Pasta",
+            "color_montadura": "Rojo",
+            "color_lentes" : "Negras",
+            "precio" : "349,99",
+            "proveedor": "Ópticas Visión Perfecta"
+        },
+        {
+            "marca": "Prada",
+            "graduacion": {
+              "izquierda": -1.50,
+              "derecha": -1.25
+            },
+            "tipo_montadura": "Pasta",
+            "color_montadura": "Negro",
+            "color_lentes": "Transparente",
+            "precio": "320,50",
+            "proveedor": "Gafas & Estilo"
+          },
+          {
+            "marca": "Oakley",
+            "graduacion": {
+              "izquierda": -2.00,
+              "derecha": -1.75
+            },
+            "tipo_montadura": "Metálica",
+            "color_montadura": "Plateado",
+            "color_lentes": "Azul",
+            "precio": "180,99",
+            "proveedor": "Ópticas Visión Perfecta"
+          }
+    ],
+
+    
+    "proveedores":[
+        {
+            "nombre": "Optica Universitaria",
+            "direccion": {
+                "calle": "Av. Diagonal",
+                "numero": "601",
+                "ciudad" : "Barcelona",
+                "codigo_postal" : "08028",
+                "pais" : "España"
+            },
+            "telefono": "123456789",
+            "fax": "123456789",
+            "NIF": "A12345678"
+        },
+        {
+            "nombre": "Ópticas Visión Perfecta",
+            "direccion": {
+              "calle": "Gran Vía",
+              "numero": "123",
+              "ciudad": "Madrid",
+              "codigo_postal": "28013",
+              "pais": "España"
+            },
+            "telefono": "+34 910123456",
+            "fax": "+34 910654321",
+            "NIF": "B12345678"
+          },
+          {
+            "nombre": "Gafas & Estilo",
+            "direccion": {
+              "calle": "Passeig de Gràcia",
+              "numero": "45",
+              "ciudad": "Barcelona",
+              "codigo_postal": "08007",
+              "pais": "España"
+            },
+            "telefono": "+34 930987654",
+            "fax": "+34 930654987",
+            "NIF": "B87654321"
+          }
+    ],
     
     "empleados":[
         {
             "nombre": "Lucía Alonso",
             "direccion": "Carrer d'Arago, 71, Barcelona",
-            "telefono": "0304454321",
-            "ventas" : [
-                { "$oid": "67b5d32576aa926d960787e8"}
-            ]
+            "telefono": "0304454321"
         },
 
         {
             "nombre": "Christian Gomez",
             "direccion": "Av Diagonal, 18, Barcelona",
-            "telefono": "727476754",
-            "ventas" : [
-                { "$oid": "67b721e80b058203b540970e"}
-            ]
+            "telefono": "727476754"
         },
         {
             "nombre": "Sofía Ramírez",
             "direccion": "Carrer Augusta, 120, Barcelona",
-            "telefono": "+55 11987654321",
-            "ventas" : [
-                { "$oid": "67b722180b058203b540970f"}
-            ]
+            "telefono": "+55 11987654321"
           },
           {
             "nombre": "Daniel Torres",
             "direccion": "Gran Vía, 30, Barcelona",
-            "telefono": "+34 655443322",
-            "ventas" : [
-                null
-            ]
-          }
+            "telefono": "+34 655443322"
+        }
     ]
 }
